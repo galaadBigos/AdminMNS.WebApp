@@ -2,13 +2,11 @@
 using AdminMNS.WebApp.Data;
 using AdminMNS.WebApp.Data.Entities;
 using AdminMNS.WebApp.Models.ViewModel.User;
-using AdminMNS.WebApp.Services;
 using AdminMNS.WebApp.Services.Abstractions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Web;
 
 namespace AdminMNS.WebApp.Controllers
 {
@@ -154,11 +152,27 @@ namespace AdminMNS.WebApp.Controllers
 			{
 				return NotFound();
 			}
-
-
 			DeleteUserViewModel model = new DeleteUserViewModel(user);
 
 			return View(model);
+		}
+
+		[HttpPost, ActionName("Delete")]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> DeleteConfirmed(string id)
+		{
+			if (_userManager.Users == null)
+			{
+				return Problem("Entity set 'AppDbContext.AspNetUsers'  is null.");
+			}
+
+			User? user = await _userManager.FindByIdAsync(id);
+			if (user != null)
+			{
+				await _userManager.DeleteAsync(user);
+			}
+
+			return RedirectToAction("Index");
 		}
 	}
 }

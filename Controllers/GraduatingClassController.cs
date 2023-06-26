@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using AdminMNS.WebApp.App_Code.Helpers;
 using AdminMNS.WebApp.Data;
 using AdminMNS.WebApp.Data.Entities;
-using Microsoft.AspNetCore.Authorization;
 using AdminMNS.WebApp.Models.ViewModel.GraduatingClass;
-using AdminMNS.WebApp.App_Code.Helpers;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AdminMNS.WebApp.Controllers
 {
@@ -135,7 +135,7 @@ namespace AdminMNS.WebApp.Controllers
 			{
 				return Problem("Entity set 'AppDbContext.GraduatingClass'  is null.");
 			}
-			var graduatingClass = await _context.GraduatingClass.FindAsync(id);
+			GraduatingClass? graduatingClass = await _context.GraduatingClass.FindAsync(id);
 			if (graduatingClass != null)
 			{
 				_context.GraduatingClass.Remove(graduatingClass);
