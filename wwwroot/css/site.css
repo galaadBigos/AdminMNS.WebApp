@@ -1,0 +1,85 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+::selection {
+    background: #D5651A;
+    color: white;
+}
+
+.btn {
+    background-color: #212950;
+    color: white;
+    font-weight: 600;
+}
+
+.btn:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #de8349;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #de8349;
+}
+
+.form-control, select {
+    margin-bottom: 10px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #eee;
+}
+
+.container-menu {
+    background-color: white;
+    padding: 20px 5%;
+    margin-top: 50px;
+    border-radius: 5px;
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
+}
+
+.navbar-brand {
+    color: #de8349 !important;
+}
+
+#nav-menu {
+    background-color: #212950;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    background-color: #de8349;
+}
+
+h1, h2, h3, h4 {
+    color: #ccc;
+}
+
+hr {
+    background: linear-gradient(to right, #777 25%, white);
+    margin: 10px 0 30px;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    color: #D5651A
+}
+
+.footer {
+    background-color: #212950;
+    color: white;
+}

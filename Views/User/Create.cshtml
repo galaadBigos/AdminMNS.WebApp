@@ -1,0 +1,134 @@
+﻿@using AdminMNS.WebApp.Services.Abstractions;
+@model AdminMNS.WebApp.Models.ViewModel.User.CreateUserViewModel
+
+@inject RoleManager<IdentityRole> roleManager;
+@inject IGraduatingClassService graduatingClassHelper;
+
+@{
+	ViewData["Title"] = "Ajouter Utilisateur";
+}
+
+<div class="container-menu">
+	<h1>Ajouter</h1>
+	<h4>Utilisateur</h4>
+	<hr />
+	<form asp-controller="User" asp-action="Create" method="post">
+		<div asp-validation-summary="All" class="text-danger"></div>
+		<div class="form-group">
+			<label asp-for="Firstname" class="col-md-2"></label>
+			<div class="col-md-10">
+				<input asp-for="Firstname" class="form-control" />
+				<span asp-validation-for="Firstname" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label asp-for="Lastname" class="col-md-2"></label>
+			<div class="col-md-10">
+				<input asp-for="Lastname" class="form-control" />
+				<span asp-validation-for="Lastname" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label asp-for="Email" class="col-md-2"></label>
+			<div class="col-md-10">
+				<input asp-for="Email" class="form-control" />
+				<span asp-validation-for="Email" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label asp-for="Password" class="col-md-2"></label>
+			<div class="col-md-10">
+				<input asp-for="Password" class="form-control" />
+				<span asp-validation-for="Password" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label asp-for="ConfirmPassword" class="col-md-7"></label>
+			<div class="col-md-10">
+				<input asp-for="ConfirmPassword" class="form-control" />
+				<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label asp-for="Birthday" class="col-md-7"></label>
+			<div class="col-md-10">
+				<input asp-for="Birthday" class="form-control" />
+				<span asp-validation-for="Birthday" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label asp-for="WayNumber" class="col-md-7"></label>
+			<div class="col-md-10">
+				<input asp-for="WayNumber" class="form-control" />
+				<span asp-validation-for="WayNumber" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label asp-for="WayType" class="col-md-2"></label>
+			<div class="col-md-10">
+				<input asp-for="WayType" class="form-control" />
+				<span asp-validation-for="WayType" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label asp-for="WayName" class="col-md-2"></label>
+			<div class="col-md-10">
+				<input asp-for="WayName" class="form-control" />
+				<span asp-validation-for="WayName" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label asp-for="City" class="col-md-2"></label>
+			<div class="col-md-10">
+				<input asp-for="City" class="form-control" />
+				<span asp-validation-for="City" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label asp-for="PostalCode" class="col-md-2"></label>
+			<div class="col-md-10">
+				<input asp-for="PostalCode" class="form-control" />
+				<span asp-validation-for="PostalCode" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label asp-for="GraduatingClassId" class="col-md-2"></label>
+			<div class="col-md-10">
+				<select asp-for="GraduatingClassId" class="form-select">
+					<option value="@null">Aucune</option>
+					@foreach (GraduatingClass graduatingClass in await graduatingClassHelper.GetGraduatingClasses())
+					{
+						<option value="@graduatingClass.Id">@graduatingClass.Name</option>
+					}
+				</select>
+				<span asp-validation-for="GraduatingClassId" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label asp-for="RoleId" class="col-md-2"></label>
+			<div class="col-md-10">
+				<select asp-for="RoleId" class="form-select">
+					@foreach (IdentityRole role in roleManager.Roles)
+					{
+						<option value="@role.Id">@role.Name</option>
+					}
+				</select>
+				<span asp-validation-for="RoleId" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-2">
+				<button type="submit" class="btn form-control">Valider</button>
+			</div>
+		</div>
+	</form>
+	<div>
+		<a asp-controller="Administration" asp-action="Index">Retour à l'accueil d'administration</a> |
+		<a asp-controller="User" asp-action="Index">Retour à la liste</a>
+	</div>
+</div>
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}

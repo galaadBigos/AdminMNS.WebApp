@@ -1,0 +1,14 @@
+﻿@{
+	ViewData["Title"] = "Administration";
+}
+
+<div class="container-menu">
+	<h1>Panneau d'administration</h1>
+	<hr />
+	<a asp-controller="User" asp-action="Index" class="btn">Gérer les utilisateurs</a>
+	<a asp-controller="GraduatingClass" asp-action="Index" class="btn">Gérer les formations</a>
+	<a asp-controller="UserRole" asp-action="Index" class="btn">Gérer les autorisations</a>
+	<div>
+		<a asp-controller="Home" asp-action="Index">Retour à l'accueil</a>
+	</div>
+</div>

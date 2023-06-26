@@ -1,0 +1,64 @@
+﻿@model IEnumerable<AdminMNS.WebApp.Models.ViewModel.User.IndexUserViewModel>
+
+@if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+{
+	<div class="alert alert-info">
+		<div class="text-center">
+			@ViewBag.Message
+		</div>
+	</div>
+}
+
+<div class="container-menu">
+	<h1>Index</h1>
+
+	<p>
+		<a asp-action="Create">Ajouter un nouveau utilisateur</a>
+	</p>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.Firstname)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Lastname)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.RoleNames)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.GraduatingClassName)
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.Firstname)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Lastname)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.RoleNames)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.GraduatingClassName)
+					</td>
+					<td>
+						<a asp-action="Edit" asp-route-id="@item.Id">Éditer</a> |
+						<a asp-action="Details" asp-route-id="@item.Id">Détails</a> |
+						<a asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	<div>
+		<a asp-controller="Administration" asp-action="Index">Retour à l'accueil d'administration</a>
+	</div>
+</div>

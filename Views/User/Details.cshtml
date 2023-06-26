@@ -1,0 +1,89 @@
+﻿@using AdminMNS.WebApp.Services.Abstractions;
+@model AdminMNS.WebApp.Models.ViewModel.User.DetailsUserViewModel
+
+@inject IRoleService roleService;
+
+@{
+	ViewData["Title"] = "Détails Utilisateur";
+}
+
+<div class="container-menu">
+	<h1>Détails</h1>
+
+	<div>
+		<h4>Utilisateur</h4>
+		<hr />
+		<dl class="row">
+			<dt class="col-sm-3">
+				@Html.DisplayNameFor(model => model.Firstname)
+			</dt>
+			<dd class="col-sm-9">
+				@Html.DisplayFor(model => model.Firstname)
+			</dd>
+			<dt class="col-sm-3">
+				@Html.DisplayNameFor(model => model.Lastname)
+			</dt>
+			<dd class="col-sm-9">
+				@Html.DisplayFor(model => model.Lastname)
+			</dd>
+			<dt class="col-sm-3">
+				@Html.DisplayNameFor(model => model.Email)
+			</dt>
+			<dd class="col-sm-9">
+				@Html.DisplayFor(model => model.Email)
+			</dd>
+			<dt class="col-sm-3">
+				@Html.DisplayNameFor(model => model.Birthday)
+			</dt>
+			<dd class="col-sm-9">
+				@Html.DisplayFor(model => model.Birthday)
+			</dd>
+			<dt class="col-sm-3">
+				@Html.DisplayNameFor(model => model.WayNumber)
+			</dt>
+			<dd class="col-sm-9">
+				@Html.DisplayFor(model => model.WayNumber)
+			</dd>
+			<dt class="col-sm-3">
+				@Html.DisplayNameFor(model => model.WayType)
+			</dt>
+			<dd class="col-sm-9">
+				@Html.DisplayFor(model => model.WayType)
+			</dd>
+			<dt class="col-sm-3">
+				@Html.DisplayNameFor(model => model.WayName)
+			</dt>
+			<dd class="col-sm-9">
+				@Html.DisplayFor(model => model.WayName)
+			</dd>
+			<dt class="col-sm-3">
+				@Html.DisplayNameFor(model => model.City)
+			</dt>
+			<dd class="col-sm-9">
+				@Html.DisplayFor(model => model.City)
+			</dd>
+			<dt class="col-sm-3">
+				@Html.DisplayNameFor(model => model.PostalCode)
+			</dt>
+			<dd class="col-sm-9">
+				@Html.DisplayFor(model => model.PostalCode)
+			</dd>
+			<dt class="col-sm-3">
+				@Html.DisplayNameFor(model => model.GraduatingClassName)
+			</dt>
+			<dd class="col-sm-9">
+				@Html.DisplayFor(model =>  model.GraduatingClassName)
+			</dd>
+			<dt class="col-sm-3">
+				@Html.DisplayNameFor(model => model.RoleNames)
+			</dt>
+			<dd class="col-sm-9">
+				@Html.DisplayFor(model => model.RoleNames)
+			</dd>
+		</dl>
+	</div>
+	<div>
+		<a asp-action="Edit" asp-route-id="@Model?.Id">Éditer</a> |
+		<a asp-action="Index">Retour à la liste</a>
+	</div>
+</div>

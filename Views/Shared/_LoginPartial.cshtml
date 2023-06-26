@@ -1,0 +1,25 @@
+﻿@inject SignInManager<User> signInManager
+@inject UserManager<User> userManager
+
+<ul class="navbar-nav">
+	@if (signInManager.IsSignedIn(User))
+	{
+		<li class="nav-item text-white d-flex align-items-center me-4">
+			@userManager.GetUserName(User)
+		</li>
+		<li class="nav-item">
+			<form method="post" class="form-inline" asp-action="Logout" asp-controller="Account">
+				<button type="submit" class="btn nav-link text-white fw-bold me-4">Déconnexion</button>
+			</form>
+		</li>
+	}
+	else
+	{
+		<li class="nav-item">
+			<a class="nav-link text-white rounded me-4" asp-action="Register" asp-controller="Account">S'enregistrer</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-white rounded me-4" asp-action="Login" asp-controller="Account">S'authentifier</a>
+		</li>
+	}
+</ul>

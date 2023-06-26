@@ -1,0 +1,40 @@
+﻿@model AdminMNS.WebApp.Models.ViewModel.GraduatingClass.DeleteGraduatingClassViewModel
+
+@{
+	ViewData["Title"] = "Supprimer Formation";
+}
+
+<div class="container-menu">
+	<h1>Supprimer</h1>
+
+	<h4 class="text-danger">Voulez-vous vraiment supprimer cette formation ?</h4>
+	<div>
+		<hr />
+		<dl class="row">
+			<dt class="col-sm-2">
+				@Html.DisplayNameFor(model => model.Name)
+			</dt>
+			<dd class="col-sm-10">
+				@Html.DisplayFor(model => model.Name)
+			</dd>
+			<dt class="col-sm-2">
+				@Html.DisplayNameFor(model => model.StartDate)
+			</dt>
+			<dd class="col-sm-10">
+				@Html.DisplayFor(model => model.StartDate)
+			</dd>
+			<dt class="col-sm-2">
+				@Html.DisplayNameFor(model => model.EndDate)
+			</dt>
+			<dd class="col-sm-10">
+				@Html.DisplayFor(model => model.EndDate)
+			</dd>
+		</dl>
+
+		<form asp-action="Delete">
+			<input type="hidden" asp-for="Id" />
+			<input type="submit" value="Delete" class="btn" /> |
+			<a asp-action="Index">Retour à la liste</a>
+		</form>
+	</div>
+</div>

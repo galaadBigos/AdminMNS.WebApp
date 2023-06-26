@@ -1,0 +1,36 @@
+﻿@using AdminMNS.WebApp.Services.Abstractions;
+
+@model string
+
+@inject UserManager<User> userManager
+@inject SignInManager<User> signInManager
+@inject IRoleService roleHelper
+
+@{
+    ViewData["Title"] = "Accueil";
+    User? user = await userManager.GetUserAsync(User);
+}
+
+@if (!string.IsNullOrWhiteSpace(Model))
+{
+    <div class="alert alert-info">
+        <div class="text-center">
+            @Model
+        </div>
+    </div>
+}
+
+<div class="container-menu">
+	<h1>Accueil</h1>
+	<hr />
+    @if (!signInManager.IsSignedIn(User))
+    {
+	    <p class="fs-5 fw-bolder">
+            Veuillez-vous enregistrer ou vous connecter.
+        </p>
+    }
+    @if (await roleHelper.IsAuthorizedToAdministration(user))
+    {
+        <a asp-controller="Administration" asp-action="Index" class="btn">Panneau d'administration</a>
+    }
+</div>
