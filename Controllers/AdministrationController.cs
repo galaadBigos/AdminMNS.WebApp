@@ -6,10 +6,10 @@ namespace AdminMNS.WebApp.Controllers
 {
 	[Authorize(Roles = $"{Roles.Admin}, {Roles.Personnel}")]
 	public class AdministrationController : Controller
-    {
-        public IActionResult Index()
-        {
-            return View();
-        }
-    }
+	{
+		public IActionResult Index()
+		{
+			return View();
+		}
+	}
 }

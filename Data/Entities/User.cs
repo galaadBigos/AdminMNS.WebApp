@@ -1,7 +1,6 @@
 ﻿using AdminMNS.WebApp.Models.ViewModel.Account;
 using AdminMNS.WebApp.Models.ViewModel.User;
 using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AdminMNS.WebApp.Data.Entities
 {
@@ -28,7 +27,7 @@ namespace AdminMNS.WebApp.Data.Entities
         {
             Firstname = model.Firstname;
             Lastname = model.Lastname;
-            UserName = $"{model.Firstname}_{model.Lastname}";
+            UserName = model.Email;
             Email = model.Email;
             Birthday = model.Birthday;
             WayNumber = model.WayNumber;
@@ -38,19 +37,19 @@ namespace AdminMNS.WebApp.Data.Entities
             PostalCode = model.PostalCode;
         }
 
-		public User(CreateUserViewModel model)
-		{
-			Firstname = model.Firstname;
-			Lastname = model.Lastname;
-			UserName = $"{model.Firstname}_{model.Lastname}";
-			Email = model.Email;
-			Birthday = model.Birthday;
-			WayNumber = model.WayNumber;
-			WayType = model.WayType;
+        public User(CreateUserViewModel model)
+        {
+            Firstname = model.Firstname;
+            Lastname = model.Lastname;
+            UserName = $"{model.Firstname}_{model.Lastname}";
+            Email = model.Email;
+            Birthday = model.Birthday;
+            WayNumber = model.WayNumber;
+            WayType = model.WayType;
             WayName = model.WayName;
-			City = model.City;
-			PostalCode = model.PostalCode;
+            City = model.City;
+            PostalCode = model.PostalCode;
             GraduatingClassId = model.GraduatingClassId;
-		}
-	}
+        }
+    }
 }

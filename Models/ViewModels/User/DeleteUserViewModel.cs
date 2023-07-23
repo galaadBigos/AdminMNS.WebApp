@@ -39,12 +39,12 @@ namespace AdminMNS.WebApp.Models.ViewModel.User
 		[Display(Name = "Statut")]
 		public string RoleId { get; set; } = null!;
 
-        public DeleteUserViewModel()
-        {
-            
-        }
+		public DeleteUserViewModel()
+		{
 
-        public DeleteUserViewModel(Data.Entities.User user)
+		}
+
+		public DeleteUserViewModel(Data.Entities.User user)
 		{
 			Id = user.Id;
 			Firstname = user.Firstname;
@@ -58,5 +58,5 @@ namespace AdminMNS.WebApp.Models.ViewModel.User
 			PostalCode = user.PostalCode;
 			GraduatingClassId = user.GraduatingClassId;
 		}
-    }
+	}
 }

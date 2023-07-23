@@ -1,8 +1,9 @@
 ﻿@using AdminMNS.WebApp.Services.Abstractions;
+
 @model AdminMNS.WebApp.Models.ViewModel.User.CreateUserViewModel
 
 @inject RoleManager<IdentityRole> roleManager;
-@inject IGraduatingClassService graduatingClassHelper;
+@inject IGraduatingClassService graduatingClassService;
 
 @{
 	ViewData["Title"] = "Ajouter Utilisateur";
@@ -96,7 +97,7 @@
 			<div class="col-md-10">
 				<select asp-for="GraduatingClassId" class="form-select">
 					<option value="@null">Aucune</option>
-					@foreach (GraduatingClass graduatingClass in await graduatingClassHelper.GetGraduatingClasses())
+					@foreach (GraduatingClass graduatingClass in await graduatingClassService.GetGraduatingClasses())
 					{
 						<option value="@graduatingClass.Id">@graduatingClass.Name</option>
 					}
