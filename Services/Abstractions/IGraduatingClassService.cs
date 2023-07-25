@@ -7,5 +7,5 @@ namespace AdminMNS.WebApp.Services.Abstractions
         Task<List<GraduatingClass>> GetGraduatingClasses();
         Task<GraduatingClass?> GetGraduatingClassById(int id);
 
-	}
+    }
 }

@@ -1,6 +1,8 @@
 using AdminMNS.WebApp.Data;
 using AdminMNS.WebApp.Data.Entities;
 using AdminMNS.WebApp.Options;
+using AdminMNS.WebApp.Repositories;
+using AdminMNS.WebApp.Repositories.Abstractions;
 using AdminMNS.WebApp.Services;
 using AdminMNS.WebApp.Services.Abstractions;
 using Microsoft.AspNetCore.Identity;
@@ -38,12 +40,13 @@ namespace AdminMNS.WebApp
             builder.Services.AddOptions();
             builder.Services.Configure<MailOptions>(builder.Configuration.GetSection("Email"));
 
-			builder.Services.AddScoped<IRoleService, RoleService>();
-			builder.Services.AddScoped<IGraduatingClassService, GraduatingClassService>();
-			builder.Services.AddScoped<IEmailSender, EmailSender>();
-			builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IRoleService, RoleService>();
+            builder.Services.AddScoped<IGraduatingClassService, GraduatingClassService>();
+            builder.Services.AddScoped<IGraduatingClassRepository, GraduatingClassRepository>();
+            builder.Services.AddScoped<IEmailSender, EmailSender>();
+            builder.Services.AddScoped<IUserService, UserService>();
 
-			var app = builder.Build();
+            var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
